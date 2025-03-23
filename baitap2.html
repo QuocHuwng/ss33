@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Đếm Số Ký Tự</h1>
+    <textarea id="inputText" rows="4" placeholder="Nhập văn bản vào đây..."></textarea>
+    <br>
+    <button id="checkButton">kiểm tra</button>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("checkButton").addEventListener("click", function () {
+            const text = document.getElementById("inputText").value;
+            const charCount = text.length;
+            document.getElementById("result").innerText = `Số ký tự: ${charCount}`;
+        });  
+    </script>
+</body>
+
+</html>

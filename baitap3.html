@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lọc Sản Phẩm</title>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        #danhSachSanPham {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Lọc Sản Phẩm Theo Danh Mục</h1>
+
+    <label for="danhMucSelect">Chọn danh mục:</label>
+    <select id="danhMucSelect">
+        <option value="">-- Lựa chọn danh mục --</option>
+        <option value="Đồ ăn">Đồ ăn</option>
+        <option value="Nước">Nước</option>
+        <option value="Dụng cụ">Dụng cụ</option>
+    </select>
+
+    <button id="nutLoc">Lọc</button>
+
+    <ul id="danhSachSanPham"></ul>
+
+    <script>
+        let monAn = [
+            { ten: 'Rau sach', danhMuc: 'Đồ ăn' },
+            { ten: 'Thịt lợn', danhMuc: 'Đồ ăn' },
+            { ten: 'Pepsi không calo', danhMuc: 'Nước' },
+            { ten: 'Cocacola', danhMuc: 'Nước' },
+            { ten: 'Cò lề', danhMuc: 'Dụng cụ' },
+            { ten: 'Tuy vít', danhMuc: 'Dụng cụ' },
+        ];
+
+        function hienThiSanPham(sanPham) {
+            const danhSachSanPham = document.getElementById("danhSachSanPham");
+            danhSachSanPham.innerHTML = "";
+
+            sanPham.forEach(sp => {
+                const li = document.createElement("li");
+                li.textContent = `Tên đồ ăn: ${sp.ten} - Danh mục: ${sp.danhMuc}`;
+                danhSachSanPham.appendChild(li);
+            });
+        }
+
+        hienThiSanPham(monAn);
+
+        document.getElementById("nutLoc").addEventListener("click", function () {
+            const danhMucChon = document.getElementById("danhMucSelect").value;
+
+            const sanPhamDaLoc = danhMucChon ?
+                monAn.filter(sp => sp.danhMuc === danhMucChon) :
+                monAn;
+
+            hienThiSanPham(sanPhamDaLoc);
+        });  
+    </script>
+</body>
+
+</html>
